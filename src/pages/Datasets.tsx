@@ -4,7 +4,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ExternalLink, Satellite, Globe } from "lucide-react";
+import { ExternalLink, Satellite, Globe, Telescope } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Dataset {
   id: string;
@@ -17,6 +18,7 @@ interface Dataset {
 }
 
 const Datasets = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<"all" | "earth" | "planetary">("all");
 
   const datasets: Dataset[] = [
@@ -125,12 +127,24 @@ const Datasets = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              NASA Space Datasets
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Explore comprehensive space and Earth observation datasets from NASA and partner organizations
-            </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                  NASA Space Datasets
+                </h1>
+                <p className="text-lg text-muted-foreground">
+                  Explore comprehensive space and Earth observation datasets from NASA and partner organizations
+                </p>
+              </div>
+              <Button
+                onClick={() => navigate("/explorer")}
+                className="cosmic-glow"
+                size="lg"
+              >
+                <Telescope className="w-4 h-4 mr-2" />
+                Launch Explorer
+              </Button>
+            </div>
           </div>
 
           {/* Category Tabs */}

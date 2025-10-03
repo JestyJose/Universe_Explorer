@@ -31,6 +31,13 @@ export const Navbar = () => {
               Home
             </Button>
             <Button 
+              variant={isActive("/explorer") ? "default" : "ghost"} 
+              size="sm"
+              onClick={() => navigate("/explorer")}
+            >
+              Explorer
+            </Button>
+            <Button 
               variant={isActive("/datasets") ? "default" : "ghost"} 
               size="sm"
               onClick={() => navigate("/datasets")}

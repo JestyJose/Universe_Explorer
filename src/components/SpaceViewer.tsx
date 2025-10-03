@@ -15,13 +15,25 @@ interface Annotation {
 interface SpaceViewerProps {
   imageUrl: string;
   imageName: string;
+  annotations?: Annotation[];
+  onAnnotationsChange?: (annotations: Annotation[]) => void;
 }
 
-export const SpaceViewer = ({ imageUrl, imageName }: SpaceViewerProps) => {
+export const SpaceViewer = ({ 
+  imageUrl, 
+  imageName,
+  annotations: externalAnnotations = [],
+  onAnnotationsChange
+}: SpaceViewerProps) => {
   const viewerRef = useRef<HTMLDivElement>(null);
   const [viewer, setViewer] = useState<OpenSeadragon.Viewer | null>(null);
-  const [annotations, setAnnotations] = useState<Annotation[]>([]);
+  const [annotations, setAnnotations] = useState<Annotation[]>(externalAnnotations);
   const [isAnnotating, setIsAnnotating] = useState(false);
+
+  // Sync external annotations
+  useEffect(() => {
+    setAnnotations(externalAnnotations);
+  }, [externalAnnotations]);
 
   useEffect(() => {
     if (!viewerRef.current) return;
@@ -73,7 +85,9 @@ export const SpaceViewer = ({ imageUrl, imageName }: SpaceViewerProps) => {
         type,
       };
 
-      setAnnotations((prev) => [...prev, newAnnotation]);
+      const updatedAnnotations = [...annotations, newAnnotation];
+      setAnnotations(updatedAnnotations);
+      onAnnotationsChange?.(updatedAnnotations);
       toast.success(`Added annotation: ${label}`);
     };
 
