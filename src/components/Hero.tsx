@@ -41,12 +41,12 @@ export const Hero = ({ onGetStarted }: HeroProps) => {
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 nebula-float">
           <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Cosmic Explorer
+            Universe Explorer
           </span>
         </h1>
 
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-          Journey through galaxies, planets, and cosmic wonders. Zoom into stunning NASA imagery and explore the universe interactively.
+          Navigate the universe from distant galaxies to planetary surfaces. Explore the solar system, discover moons, and zoom into breathtaking NASA imagery.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

@@ -18,7 +18,7 @@ export const Navbar = () => {
           >
             <Telescope className="w-6 h-6 text-primary" />
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Cosmic Explorer
+              Universe Explorer
             </span>
           </div>
 

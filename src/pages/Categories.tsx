@@ -58,8 +58,8 @@ export default function Categories() {
       ]
     },
     {
-      id: "planets",
-      name: "Planets",
+      id: "solar-system",
+      name: "Solar System",
       icon: Globe,
       description: "Tour our solar system's magnificent worlds",
       color: "from-blue-500 to-cyan-500",
@@ -120,7 +120,19 @@ export default function Categories() {
   ];
 
   const handleItemClick = (category: string, item: CategoryItem) => {
-    navigate(`/object/${category}/${item.id}`, { state: { item, category } });
+    if (category === "solar-system") {
+      navigate("/solar-system");
+    } else {
+      navigate(`/object/${category}/${item.id}`, { state: { item, category } });
+    }
+  };
+
+  const handleCategoryClick = (categoryId: string) => {
+    if (categoryId === "solar-system") {
+      navigate("/solar-system");
+    } else {
+      setSelectedCategory(categoryId);
+    }
   };
 
   return (
@@ -131,9 +143,9 @@ export default function Categories() {
           {/* Zoom animation intro */}
           <div className="text-center mb-12 animate-fade-in">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Cosmic Explorer
+              Universe Explorer
             </h1>
-            <p className="text-lg text-muted-foreground">Choose a category to begin your journey</p>
+            <p className="text-lg text-muted-foreground">Choose a category to begin your cosmic journey</p>
           </div>
 
           {/* Categories Grid */}
@@ -144,7 +156,7 @@ export default function Categories() {
                   key={category.id}
                   className="group relative overflow-hidden bg-card/50 backdrop-blur-sm border-border hover:border-primary transition-all cosmic-glow cursor-pointer animate-scale-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
-                  onClick={() => setSelectedCategory(category.id)}
+                  onClick={() => handleCategoryClick(category.id)}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
                   <div className="relative p-8 text-center">
