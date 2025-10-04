@@ -41,12 +41,12 @@ export const Hero = ({ onGetStarted }: HeroProps) => {
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 nebula-float">
           <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Zoomable Space Explorer
+            Cosmic Explorer
           </span>
         </h1>
 
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-          Navigate gigapixel space imagery from NASA, annotate celestial features, and discover the universe like never before
+          Journey through galaxies, planets, and cosmic wonders. Zoom into stunning NASA imagery and explore the universe interactively.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

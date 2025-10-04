@@ -18,7 +18,7 @@ export const Navbar = () => {
           >
             <Telescope className="w-6 h-6 text-primary" />
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Space Explorer
+              Cosmic Explorer
             </span>
           </div>
 
@@ -31,11 +31,11 @@ export const Navbar = () => {
               Home
             </Button>
             <Button 
-              variant={isActive("/explorer") ? "default" : "ghost"} 
+              variant={isActive("/categories") ? "default" : "ghost"} 
               size="sm"
-              onClick={() => navigate("/explorer")}
+              onClick={() => navigate("/categories")}
             >
-              Explorer
+              Explore
             </Button>
             <Button 
               variant={isActive("/datasets") ? "default" : "ghost"} 
@@ -44,9 +44,12 @@ export const Navbar = () => {
             >
               Datasets
             </Button>
-            <Button variant="outline" size="sm" className="cosmic-glow">
-              <Github className="w-4 h-4 mr-2" />
-              GitHub
+            <Button 
+              variant={isActive("/explorer") ? "default" : "ghost"} 
+              size="sm"
+              onClick={() => navigate("/explorer")}
+            >
+              Advanced
             </Button>
           </div>
         </div>

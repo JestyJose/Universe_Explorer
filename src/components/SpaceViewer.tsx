@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import OpenSeadragon from "openseadragon";
 import { Button } from "./ui/button";
-import { Plus, Minus, Maximize2, MapPin } from "lucide-react";
+import { Plus, Minus, Maximize2, MapPin, Download } from "lucide-react";
 import { toast } from "sonner";
+
+// @ts-ignore - Annotorious types
+import * as Annotorious from "@recogito/annotorious-openseadragon";
 
 interface Annotation {
   id: string;
@@ -29,6 +32,7 @@ export const SpaceViewer = ({
   const [viewer, setViewer] = useState<OpenSeadragon.Viewer | null>(null);
   const [annotations, setAnnotations] = useState<Annotation[]>(externalAnnotations);
   const [isAnnotating, setIsAnnotating] = useState(false);
+  const annoRef = useRef<any>(null);
 
   // Sync external annotations
   useEffect(() => {
@@ -57,7 +61,33 @@ export const SpaceViewer = ({
 
     setViewer(osdViewer);
 
+    // Initialize Annotorious
+    try {
+      // @ts-ignore
+      const anno = Annotorious(osdViewer);
+      annoRef.current = anno;
+      
+      anno.on('createAnnotation', (annotation: any) => {
+        const newAnnotation: Annotation = {
+          id: Date.now().toString(),
+          x: annotation.target.selector.value.x || 0,
+          y: annotation.target.selector.value.y || 0,
+          label: annotation.body?.[0]?.value || "Unlabeled",
+          type: "feature",
+        };
+        const updatedAnnotations = [...annotations, newAnnotation];
+        setAnnotations(updatedAnnotations);
+        onAnnotationsChange?.(updatedAnnotations);
+        toast.success(`Added annotation: ${newAnnotation.label}`);
+      });
+    } catch (error) {
+      console.log("Annotorious initialization skipped:", error);
+    }
+
     return () => {
+      if (annoRef.current) {
+        annoRef.current.destroy();
+      }
       osdViewer.destroy();
     };
   }, [imageUrl]);
@@ -119,8 +149,36 @@ export const SpaceViewer = ({
   };
 
   const toggleAnnotationMode = () => {
-    setIsAnnotating(!isAnnotating);
-    toast.info(isAnnotating ? "Annotation mode disabled" : "Annotation mode enabled - click to add markers");
+    const newMode = !isAnnotating;
+    setIsAnnotating(newMode);
+    
+    if (annoRef.current) {
+      if (newMode) {
+        annoRef.current.setDrawingEnabled(true);
+      } else {
+        annoRef.current.setDrawingEnabled(false);
+      }
+    }
+    
+    toast.info(newMode ? "Annotation mode enabled - draw on the image" : "Annotation mode disabled");
+  };
+
+  const handleExportAnnotations = () => {
+    if (annotations.length === 0) {
+      toast.error("No annotations to export");
+      return;
+    }
+
+    const dataStr = JSON.stringify({ imageName, annotations }, null, 2);
+    const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(dataStr)}`;
+    const exportFileDefaultName = `${imageName}-annotations-${Date.now()}.json`;
+
+    const linkElement = document.createElement("a");
+    linkElement.setAttribute("href", dataUri);
+    linkElement.setAttribute("download", exportFileDefaultName);
+    linkElement.click();
+
+    toast.success("Annotations exported successfully");
   };
 
   return (
@@ -177,6 +235,15 @@ export const SpaceViewer = ({
           className="cosmic-glow bg-card/80 backdrop-blur-sm hover:bg-card"
         >
           <MapPin className="w-4 h-4" />
+        </Button>
+        <Button
+          onClick={handleExportAnnotations}
+          size="icon"
+          variant="outline"
+          className="cosmic-glow bg-card/80 backdrop-blur-sm hover:bg-card"
+          disabled={annotations.length === 0}
+        >
+          <Download className="w-4 h-4" />
         </Button>
       </div>
 
