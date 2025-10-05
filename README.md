@@ -28,7 +28,7 @@ Universe Explorer makes space **accessible, interactive, and fun**:
 
 ##  Visit the Website
 
-Start your journey among the stars now: [https://universeexplorer.lovable.app](https://universeexplorer.lovable.app) ✨
+Start your journey among the stars now: [https://universeexplorer.lovable.app](https://universeexplorer.lovable.app) 
 
 ---
 
