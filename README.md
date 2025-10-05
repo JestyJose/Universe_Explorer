@@ -1,47 +1,50 @@
-#  Universe Explorer
+Universe Explorer
 
-Welcome to **Universe Explorer** — your interactive gateway to the cosmos!  
+Welcome to Universe Explorer — your interactive gateway to the cosmos.
 
-Dive into the wonders of space, explore celestial objects, and experience the universe like never before.  
+Dive into the wonders of space, explore celestial objects, and experience the universe like never before.
 
----
+Features
 
-##  Features
+Explore Planets & Stars: Discover our solar system and beyond, with detailed visuals and facts.
 
-- **Explore Planets & Stars**: Discover our solar system and beyond, with detailed visuals and facts.  
-- **Galaxies & Nebulae**: Zoom through distant galaxies and marvel at stunning cosmic formations.  
-- **Asteroids & Comets**: Track space rocks and icy travelers across the solar system.  
-- **Interactive Visualizations**: Smooth zooming, panning, and immersive exploration for an engaging experience.  
-- **Learn & Discover**: Fun trivia, scientific data, and astronomical insights for curious minds of all ages.  
+Galaxies & Nebulae: Zoom through distant galaxies and marvel at stunning cosmic formations.
 
----
+Asteroids & Comets: Track space rocks and icy travelers across the solar system.
 
-##  Why Universe Explorer?
+Interactive Visualizations: Smooth zooming, panning, and immersive exploration for an engaging experience.
 
-Universe Explorer makes space **accessible, interactive, and fun**:
+Learn & Discover: Fun trivia, scientific data, and astronomical insights for curious minds of all ages.
 
-- Perfect for students, educators, and space enthusiasts.  
-- Explore the cosmos at your own pace.  
-- Stunning visuals combined with accurate astronomical data.  
+Why Universe Explorer?
 
----
+Universe Explorer makes space accessible, interactive, and fun:
 
-##  Visit the Website
+Perfect for students, educators, and space enthusiasts.
 
-Start your journey among the stars now: [https://universeexplorer.lovable.app](https://universeexplorer.lovable.app) 
+Explore the cosmos at your own pace.
 
----
+Stunning visuals combined with accurate astronomical data.
 
-##  Built With
+Visit the Website
 
-- **Vite + React + TypeScript** — fast, modern, and reliable front-end.  
-- **Tailwind CSS & shadcn-ui** — beautiful, responsive, and customizable design.  
-- **Lovable.dev** — seamless AI-powered development and deployment.  
+Start your journey among the stars now:
+https://universeexplorer.lovable.app
 
----
+Presentation
 
-##  Join the Exploration
+Our presentation is available here:
+https://1drv.ms/p/c/117936e4b8d92414/EZwzz6JWm8JFoQctve87OMYB96fZzU1ZMg1hZ41tZqx1Tg?e=GvqTPT
 
-Embark on an interstellar adventure and see the universe like never before.  
-Every click brings you closer to the mysteries of space.  
+Built With
 
+Vite + React + TypeScript — fast, modern, and reliable front-end.
+
+Tailwind CSS & shadcn-ui — beautiful, responsive, and customizable design.
+
+Lovable.dev — seamless AI-powered development and deployment.
+
+Join the Exploration
+
+Embark on an interstellar adventure and see the universe like never before.
+Every click brings you closer to the mysteries of space.
